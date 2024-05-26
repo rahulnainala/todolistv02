@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from "react";
 function Todolist() {
   const [todos, setTodos] = useState([]);
   const [error, setError] = useState(false); // State to track empty input error
+  const [limit, setLimit] = useState(0);
   const todoText = useRef();
 
   useEffect(() => {
@@ -13,12 +14,20 @@ function Todolist() {
   function addTodo(event) {
     event.preventDefault();
     const todoValue = todoText.current.value.trim(); // Trim whitespace
+    const next = [...todos, todoValue];
+    if (next.length > 8) {
+      alert(
+        "You have reached the maximum limit of 9 todos. Please delete some todos before adding more.",
+      );
+      return;
+    }
     if (todoValue) {
-      const next = [...todos, todoValue];
       setTodos(next);
       localStorage.setItem("todos", JSON.stringify(next));
       todoText.current.value = ""; // Clear input field after adding todo
       setError(false); // Reset error state
+      setLimit(next.length);
+      console.log(limit);
     } else {
       setError(true); // Set error state if input is empty
     }
