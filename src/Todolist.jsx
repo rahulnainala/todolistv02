@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from "react";
 function Todolist() {
   const [todos, setTodos] = useState([]);
   const [error, setError] = useState(false); // State to track empty input error
+  const [removeT, setRemoveT] = useState(false);
   const [limit, setLimit] = useState(0);
   const todoText = useRef();
 
@@ -17,8 +18,9 @@ function Todolist() {
     const next = [...todos, todoValue];
     if (next.length > 8) {
       alert(
-        "You have reached the maximum limit of 9 todos. Please delete some todos before adding more.",
+        "You have reached the maximum limit of 8 todos. Please delete some todos before adding more."
       );
+      setRemoveT(true);
       return;
     }
     if (todoValue) {
@@ -56,6 +58,18 @@ function Todolist() {
             <span className="block sm:inline">
               {" "}
               Please enter a task before adding!
+            </span>
+          </div>
+        )}
+        {removeT && (
+          <div
+            className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative"
+            role="alert"
+          >
+            <strong className="font-bold">Error:</strong>
+            <span className="block sm:inline">
+              {" "}
+              Please remove a task to add!
             </span>
           </div>
         )}
