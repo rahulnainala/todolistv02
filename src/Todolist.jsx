@@ -16,7 +16,7 @@ function Todolist() {
     event.preventDefault();
     const todoValue = todoText.current.value.trim(); // Trim whitespace
     const next = [...todos, todoValue];
-    if (next.length > 8) {
+    if (next.length > 7) {
       setRemoveT(true);
       return;
     }
@@ -35,7 +35,10 @@ function Todolist() {
   function removeTodo(indexToRemove) {
     const updatedTodos = todos.filter((_, index) => index !== indexToRemove);
     setTodos(updatedTodos);
+
     localStorage.setItem("todos", JSON.stringify(updatedTodos));
+
+    setRemoveT(false); //updating the value to false so as to not show the error message
   }
 
   return (
