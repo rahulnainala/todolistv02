@@ -46,7 +46,7 @@ function Todolist() {
       <div className="max-w-md w-full space-y-8 rounded-lg p-10 bg-gray-200 ring-inset">
         <div>
           <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
-            Todo List 📋
+            📋 Todoist
           </h2>
         </div>
         {error && (
@@ -87,7 +87,7 @@ function Todolist() {
               type="submit"
               className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-green-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
             >
-              Add Todo ✅
+              Add ✅
             </button>
           </div>
         </form>
@@ -102,7 +102,7 @@ function Todolist() {
                 className="text-red-600 hover:text-red-800"
                 onClick={() => removeTodo(index)}
               >
-                Remove
+                Remove ❌
               </button>
             </li>
           ))}
