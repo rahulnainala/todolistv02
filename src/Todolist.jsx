@@ -17,9 +17,6 @@ function Todolist() {
     const todoValue = todoText.current.value.trim(); // Trim whitespace
     const next = [...todos, todoValue];
     if (next.length > 8) {
-      alert(
-        "You have reached the maximum limit of 8 todos. Please delete some todos before adding more."
-      );
       setRemoveT(true);
       return;
     }
